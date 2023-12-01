@@ -53,6 +53,30 @@
 
         // Call the setSrcAttributes function when the page loads
         window.onload = setSrcAttributes;
+
+        function checkIframeActivity() {
+            const iframe = document.getElementById('myIframe');
+
+            // Check if iframe contentWindow is accessible and not null
+            if (iframe && iframe.contentWindow) {
+                // Check if iframe contentWindow has loaded content (considering cross-origin restrictions)
+                try {
+                    const contentDocument = iframe.contentWindow.document;
+                    if (contentDocument && contentDocument.readyState === 'complete') {
+                        console.log('Iframe is active!');
+                    } else {
+                        console.log('Iframe has not loaded or is inactive.');
+                    }
+                } catch (error) {
+                    console.log('Error accessing iframe content: ' + error.message);
+                }
+            } else {
+                console.log('Iframe is not accessible.');
+            }
+        }
+
+        // Call the checkIframeActivity function after 5 seconds
+        setTimeout(checkIframeActivity, 5000);
     </script>
 </body>
 
