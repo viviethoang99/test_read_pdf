@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GFG</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #pdf-section {
+            overflow: hidden;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="pdf-section">
+        <object id="dynamicObject" data="" type="application/pdf" width="100%" height="100%">
+            <iframe id="dynamicIframe" src="" width="100%" height="100%" style="border: none">
+            </iframe>
+        </object>
+    </section>
+
+    <script>
+        // Function to get URL parameters
+        function getURLParams() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            return urlParams.get('url');
+        }
+
+        // Function to set src attributes based on URL parameter
+        function setSrcAttributes() {
+            const urlParam = getURLParams();
+
+            console.log(urlParam);
+            if (urlParam) {
+                // Assuming 'url' parameter is used for both object and iframe
+                const dynamicImage = document.getElementById('dynamicObject');
+                const dynamicIframe = document.getElementById('dynamicIframe');
+
+                dynamicImage.data = urlParam;
+                dynamicIframe.src = urlParam;
+
+            }
+        }
+
+        // Call the setSrcAttributes function when the page loads
+        window.onload = setSrcAttributes;
+    </script>
+</body>
+
+</html>
