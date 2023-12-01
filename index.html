@@ -55,7 +55,7 @@
         window.onload = setSrcAttributes;
 
         function checkIframeActivity() {
-            const iframe = document.getElementById('myIframe');
+            const iframe = document.getElementById('dynamicIframe');
 
             // Check if iframe contentWindow is accessible and not null
             if (iframe && iframe.contentWindow) {
@@ -71,7 +71,7 @@
                     console.log('Error accessing iframe content: ' + error.message);
                 }
             } else {
-                console.log('Iframe is not accessible.');
+                console.log('Iframe is not accessible.' + iframe.contentWindow);
             }
         }
 
