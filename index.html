@@ -61,7 +61,7 @@
             if (iframe && iframe.contentWindow) {
                 // Check if iframe contentWindow has loaded content (considering cross-origin restrictions)
                 try {
-                    const contentDocument = iframe.contentWindow.document;
+                    const contentDocument = iframe.contentWindow?.document;
                     if (contentDocument && contentDocument.readyState === 'complete') {
                         /// PDF lỗi sẽ vào đây :v 
                         console.log('Iframe is active!');
