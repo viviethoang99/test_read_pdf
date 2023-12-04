@@ -20,6 +20,7 @@
             height: 100%;
         }
     </style>
+    <script src="jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -61,10 +62,12 @@
             if (iframe && iframe.contentWindow) {
                 // Check if iframe contentWindow has loaded content (considering cross-origin restrictions)
                 try {
-                    const contentDocument = iframe.contentWindow?.document;
+                    const contentDocument = iframe.contentWindow.document;
+                    const test = $("#dynamicIframe").contents().find("body").html();
                     if (contentDocument && contentDocument.readyState === 'complete') {
                         /// PDF lỗi sẽ vào đây :v 
                         console.log('Iframe is active!');
+                        console.log(test);
                         // location.reload();
                     } else {
                         console.log('Iframe has not loaded or is inactive.');
